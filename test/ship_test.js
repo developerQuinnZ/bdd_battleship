@@ -2,33 +2,31 @@ var expect = require('chai').expect;
 
 describe('Should check for ship', function () {
     var checkForShip = require("../game_logic/ship_methods").checkForShip;
+    var player;
 
-    it('should correctly report no ship at a given players coordinate', function () {
-
+    before(function(){
         player = {
             ships: [
                 {
-                    locations: [[0, 0]]
+                    locations: [[0, 0], [0, 1]]
+                },
+                {
+                    locations: [[1, 0], [1, 1]]
+                },
+                {
+                    locations: [[2, 0], [2, 1], [2, 2], [2, 3]]
                 }
 
             ]
         };
+    });
 
+    it('should correctly report no ship at a given players coordinate', function () {
         expect(checkForShip(player, [9, 9])).to.be.false;
     });
 
     it('should correctly report a ship located at given coordinates', function () {
-
-        player = {
-            ships: [
-                {
-                    locations: [[9, 9]]
-                }
-
-            ]
-        };
-
-        expect(checkForShip(player, [9, 9])).to.deep.equal(player.ships[0]);
+        expect(checkForShip(player, [0,0])).to.deep.equal(player.ships[0]);
     });
 
     it('should handle ships at multiple coordinates', function () {
@@ -92,9 +90,10 @@ describe('damgaeShip', function () {
 
 describe('fire', function (ship, coordinates) {
     var fire = require('../game_logic/ship_methods').fire;
+    var player;
 
-    it('should check for ship and call damage ship if it exists', function () {
-        var player = {
+    beforeEach(function(){
+        player = {
             ships: [
                 {
                 locations: [[0, 0]],
@@ -102,8 +101,18 @@ describe('fire', function (ship, coordinates) {
                 }
           ]
         };
-        fire(player, [0,0]);
+    });
 
+    after(function(){
+        console.log("Whole test suite done");
+    })
+
+    afterEach(function(){
+        console.log("One unit test completed");
+    })
+
+    it('should check for ship and call damage ship if it exists', function () {
+        fire(player, [0,0]);
         expect(player.ships[0].damage[0]).to.deep.equal([0,0]);
     });
 
