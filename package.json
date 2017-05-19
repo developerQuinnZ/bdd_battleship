@@ -1,0 +1,25 @@
+{
+  "name": "unit_testing_battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main_test.js",
+  "dependencies": {
+    "chai": "^3.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developerQuinnZ/bdd_battleship.git"
+  },
+  "author": "Quinn Zepeda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/developerQuinnZ/bdd_battleship/issues"
+  },
+  "homepage": "https://github.com/developerQuinnZ/bdd_battleship#readme"
+}
